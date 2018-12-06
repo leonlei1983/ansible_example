@@ -1,0 +1,16 @@
+---
+- name: install essential packages
+  hosts: demo2
+  become: true
+  roles:
+    - server_setup
+
+- name: setup nginx
+  hosts: demo2
+  vars:
+    allow_group: "demo2"
+  become: true
+  roles:
+    - geerlingguy.nginx
+    - nginx_config
+    - app_setup

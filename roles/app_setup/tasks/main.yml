@@ -1,0 +1,30 @@
+---
+- name: create application root
+  file:
+    path: "{{ item }}"
+    state: directory
+    mode: 0755
+    owner: "{{ deploy_user }}"
+    group: "{{ deploy_user }}"
+    recurse: true
+  loop: "{{ app_required_paths }}"
+
+- name: generate config for database connection
+  when: app_use_database == true
+  template:
+    src: database.yml.j2
+    dest: "{{ app_config_path }}/database.yml"
+    owner: "{{ deploy_user }}"
+    group: "{{ deploy_user }}"
+    mode: 0644
+
+- stat:
+    path: "{{ app_current_path }}"
+  register: current_path_st
+
+- name: create symbolic link current
+  when: current_path_st.stat.exists == false
+  file:
+    src: "{{ app_release_path }}"
+    dest: "{{ app_current_path }}"
+    state: link

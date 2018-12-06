@@ -1,0 +1,10 @@
+#-----------------------
+#  geerlingguy.nginx
+#-----------------------
+nginx_remove_default_vhost: true
+
+#-----------------------
+#
+#-----------------------
+app_env: develop
+app_root_path: /var/www/demo2

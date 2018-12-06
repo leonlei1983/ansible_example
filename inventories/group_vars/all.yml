@@ -1,0 +1,5 @@
+admin_user: admin
+deploy_user: deploy
+office_ips:
+  - 59.124.6.175
+  - 59.124.6.158

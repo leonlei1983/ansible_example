@@ -1,0 +1,27 @@
+---
+- name: create nginx log path
+  file:
+    path: /var/log/nginx
+    state: directory
+    mode: 0755
+    owner: www-data
+    group: adm
+    recurse: true
+
+- name: generate site config from template
+  when: allow_group is defined and allow_group in group_names
+  template:
+    src: example.com.conf.j2
+    dest: "{{ nginx_sites_available }}/example.com.conf"
+    owner: root
+    group: root
+    mode: 0644
+
+- name: enable web application
+  when: allow_group is defined and allow_group in group_names
+  file:
+    src: "{{ nginx_sites_available }}/example.com.conf"
+    dest: "{{ nginx_sites_enabled }}/example.com.conf"
+    state: link
+  notify: restart nginx
+

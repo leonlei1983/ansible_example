@@ -1,0 +1,9 @@
+{{ app_env }}:
+  adapter: mysql2
+  encoding: utf8
+  database: resumegenius_staging
+  username: {{ mysql_users[0]['name'] }}
+  password: {{ mysql_users[0]['password'] }}
+  host: {{ mysql_users[0]['host'] }}
+  pool: 5
+  reconnect: true

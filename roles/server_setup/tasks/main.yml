@@ -1,0 +1,15 @@
+---
+- name: install essential packages
+  package:
+    name: "{{ item }}"
+    state: present
+  loop: "{{ list_of_packages }}"
+
+- name: setup firewall
+  debug:
+    msg: "{{ inventory_hostname }}"
+
+- name: add {{ deploy_user }} user
+  user:
+    name: "{{ deploy_user }}"
+    shell: /bin/bash

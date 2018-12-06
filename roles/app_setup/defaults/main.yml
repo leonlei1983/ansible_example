@@ -1,0 +1,14 @@
+---
+app_root_path: /var/www/demo
+app_log_path: "{{ app_root_path }}/shared/log"
+app_config_path: "{{ app_root_path }}/shared/config"
+app_release_path: "{{ app_root_path }}/release"
+app_current_path: "{{ app_root_path }}/current"
+
+app_required_paths:
+  - "{{ app_root_path }}"
+  - "{{ app_log_path }}"
+  - "{{ app_config_path }}"
+  - "{{ app_release_path }}"
+
+app_use_database: false
