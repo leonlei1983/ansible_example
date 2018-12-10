@@ -1,4 +1,10 @@
 server {
   listen 80;
   server_name _;
+
+  location / {
+{% for host in office_ips %}
+    allow {{ host }}/32;
+{% endfor %}
+  }
 }

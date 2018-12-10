@@ -16,6 +16,7 @@
     owner: root
     group: root
     mode: 0644
+  notify: restart nginx
 
 - name: enable web application
   when: allow_group is defined and allow_group in group_names
