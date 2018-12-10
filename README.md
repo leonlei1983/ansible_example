@@ -33,6 +33,14 @@ reference:
 reference:
 - https://raw.githubusercontent.com/ansible/ansible/devel/examples/ansible.cfg
 
+
+### inventory
+
+list all hosts from the specific inventory file
+```sh
+ansible-inventory -i inventories/staging --vault-password-file=<vault password file> --list
+```
+
 ### vault variable
 
 encryption
