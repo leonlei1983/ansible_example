@@ -1,0 +1,15 @@
+---
+- hosts: all
+  vars:
+    run_group: 'demo2'
+  tasks:
+    - name: get db private ip by group name
+      when: run_group in group_names
+      debug:
+        msg: "{{ hostvars[ groups['demo-db'] | first ]['ansible_default_ipv4']['address'] }}"
+
+    - name: show all host ip in demo group
+      when: run_group in group_names
+      debug:
+        msg: "{{ hostvars[item]['ansible_default_ipv4']['address'] }}"
+      loop: "{{ groups['demo'] }}"
