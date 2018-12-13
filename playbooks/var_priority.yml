@@ -1,0 +1,6 @@
+---
+- hosts: demo2
+  vars:
+    test_var: 333
+  roles:
+    - { role: test_config, test_var: 444 }

@@ -1,5 +1,20 @@
+---
 admin_user: admin
 deploy_user: deploy
 office_ips:
   - 59.124.6.175
   - 59.124.6.158
+
+#-----------------------
+#
+#-----------------------
+test_var: 123
+
+sudoers_sudoers:
+  privileges:
+    - name: root
+      entry: "ALL=(ALL:ALL) ALL"
+    - name: "%admin"
+      entry: "ALL=(ALL) ALL"
+    - name: "%sudo"
+      entry: "ALL=NOPASSWD:ALL"

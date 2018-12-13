@@ -1,0 +1,33 @@
+---
+- hosts: demo2
+  gather_facts: False
+  tasks:
+    - my_sample_module:
+        name: hello world
+      register: message
+
+    - debug:
+        msg: "{{ message }}"
+
+    # - name: 'ensure the ruby JSON gem is installed'
+    #   action: gem name=json state=present
+
+    # - name: 'call a custom ruby fact module'
+    #   action: my_ruby_facts x=7
+
+    # - name: 'call our ruby utility module'
+    #   action: my_ruby_calculator a={{ squared }} b=100
+    #   register: my_result
+
+    # - name: 'test that things worked as expected'
+    #   action: debug msg='success, things added up as we expect!'
+    #   when: my_result.sum == 149
+
+    # - name: 'fail if something bad happened'
+    #   action: fail msg='something bad happened'
+    #   when: my_result.sum != 149
+
+    # - name: 'dynamically group the system by some variables'
+    #   group_by: key=sky_{{sky}}
+
+
